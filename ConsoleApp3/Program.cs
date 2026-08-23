@@ -18,13 +18,17 @@ Console.WriteLine($"Producto cargado: {producto} - ${precio}");
 
 Console.ReadLine();
 
+int cantidadProductos = 0;
+decimal total = 0m;
+int opcion;
+
 do
 {
     Console.WriteLine("Qué desea hacer?");
     Console.WriteLine("1 - Cargar un nuevo producto");
     Console.WriteLine("2- Cerrar la ventana");
     Console.Write("Opción: ");
-    int opcion = Convert.ToInt32(Console.ReadLine());
+    opcion = Convert.ToInt32(Console.ReadLine());
     
     switch (opcion)
     {
@@ -151,3 +155,14 @@ for(int i = 0; i < 30; i++)
 {
     Console.Write("-");
 }
+Console.WriteLine() ;
+
+Console.WriteLine($"TOTAL: {totalFinal}");
+
+for ( int i = 0; i < 30; i++ )
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+
+Console.ReadLine();
