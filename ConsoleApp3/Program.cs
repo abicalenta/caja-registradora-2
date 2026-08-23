@@ -40,7 +40,7 @@ do
             break;
 
         case 2:
-            Console.WriteLine("\nVenta cerrada.");
+            Console.WriteLine("\nVenta cerrada.\n");
             break;
 
         default:
@@ -71,5 +71,83 @@ Console.WriteLine($"Total: {totalConDescuento}");
 
 Console.ReadLine();
 
+decimal porcentajeDescuento = 0m;
 
+if (subtotal > 50000m)
+{
+    porcentajeDescuento = DescuentoAlto;
+}
+else if (subtotal > 20000m) ;
+{
+    porcentajeDescuento = descuentoMedio;
+}
 
+decimal descuentoMonto = subtotal * porcentajeDescuento;
+decimal totalConDescuento = subtotal - descuentoMonto;
+
+int medioPago;
+bool medioPagoValido = false;
+decimal descuentoEfectivoMonto = 0m;
+decimal recargoCreditoMonto = 0m;
+
+do
+{
+    Console.WriteLine("Medio de pago:");
+    Console.WriteLine("1 - Efectivo");
+    Console.WriteLine("2 - Débito");
+    Console.WriteLine("3 - Crédito");
+    Console.Write("Opción: ");
+    medioPago = Convert.ToInt32(Console.ReadLine());
+
+    switch (medioPago)
+    {
+        case 1:
+            descuentoEfectivoMonto = totalConDescuento * DescuentoEfectivo;
+            medioPagoValido = true;
+            break;
+        case 2:
+            medioPagoValido = true;
+            break;
+        case 3:
+            recargoCreditoMonto = totalConDescuento * RecargoCredito;
+            medioPagoValido = true;
+            break;
+        default:
+            Console.WriteLine("Opción inválida. Ingrese el medio de pago nuevamente.\n");
+            break;
+    }
+} while (!medioPagoValido);
+
+decimal descuentoTotal = descuentoMonto + descuentoEfectivoMonto;
+decimal totalFinal = subtotal - descuentoTotal + recargoCreditoMonto;
+
+Console.WriteLine($"\nTotal a pagar: {totalFinal}");
+
+Console.ReadLine();
+
+Console.WriteLine();
+
+for (int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+
+Console.WriteLine($"       {NombreComercio}");
+
+for (int i = 0;i < 30;i++)
+{
+    Console.Write("-");
+}
+Console.WriteLine() ;
+
+Console.WriteLine($"Cajero: {cajero}");
+Console.WriteLine($"Productos: {cantidadProductos}");
+Console.WriteLine($"Subtotal: {subtotal}");
+Console.WriteLine($"Descuento: {descuentoTotal}");
+Console.WriteLine($"Recargo: {recargoCreditoMonto}");
+
+for(int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+}
