@@ -55,6 +55,21 @@ Console.WriteLine($"Total: {total}");
 
 Console.ReadLine();
 
+decimal porcentajeDescuento = 0m;
+
+if (subtotal > 50000m)
+{
+    porcentajeDescuento = DescuentoMedio;
+}
+
+decimal descuentoMonto = subtotal * porcentajeDescuento;
+decimal totalConDescuenot = subtotal - descuentoMontoMonto;
+
+Console.WriteLine($"Subtotal: {subtotal}");
+Console.WriteLine($"Descuento: {descuentoMonto}");
+Console.WriteLine($"Total: {totalConDescuento}");
+
+Console.ReadLine();
 
 
 
