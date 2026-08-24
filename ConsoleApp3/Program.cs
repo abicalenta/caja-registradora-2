@@ -8,15 +8,12 @@ Console.WriteLine($"Bienvenida, {nombre}. Caja abierta");
 Console.ReadLine();
 
 
-Console.Write("Nombre del producto: ");
-string producto = Console.ReadLine();
-
-Console.Write("Precio del producto: ");
-decimal precio = Convert.ToDecimal(Console.ReadLine());
-
-Console.WriteLine($"Producto cargado: {producto} - ${precio}");
-
-Console.ReadLine();
+int cantidadProductos = 0;
+decimal subtotal = 0m;
+int opcion;
+const decimal DescuentoMedio = 0.90m;
+const decimal descuentoMontoMonto = 100;
+decimal TotalConDescuento = 0;
 
 do
 {
@@ -24,7 +21,7 @@ do
     Console.WriteLine("1 - Cargar un nuevo producto");
     Console.WriteLine("2- Cerrar la ventana");
     Console.Write("Opción: ");
-    int opcion = Convert.ToInt32(Console.ReadLine());
+    opcion = Convert.ToInt32(Console.ReadLine());
     
     switch (opcion)
     {
@@ -34,7 +31,7 @@ do
             Console.Write("Precio del producto: ");
             decimal precio = Convert.ToDecimal(Console.ReadLine());
 
-            total += precio;
+            subtotal += precio;
             cantidadProductos++;
             Console.WriteLine($"-> {producto} agregado.\n");
             break;
@@ -51,7 +48,7 @@ do
 } while (opcion != 2);
 
 Console.WriteLine($"Cantidad de productos: {cantidadProductos}");
-Console.WriteLine($"Total: {total}");
+Console.WriteLine($"Total: {subtotal}");
 
 Console.ReadLine();
 
@@ -66,12 +63,14 @@ decimal descuentoMonto = subtotal * porcentajeDescuento;
 decimal totalConDescuenot = subtotal - descuentoMontoMonto;
 
 Console.WriteLine($"Subtotal: {subtotal}");
-Console.WriteLine($"Descuento: {descuentoMonto}");
-Console.WriteLine($"Total: {totalConDescuento}");
+
+
 
 Console.ReadLine();
 
-decimal porcentajeDescuento = 0m;
+
+decimal DescuentoAlto = 0m;
+decimal descuentoMedio = 0m;
 
 if (subtotal > 50000m)
 {
@@ -82,7 +81,6 @@ else if (subtotal > 20000m) ;
     porcentajeDescuento = descuentoMedio;
 }
 
-decimal descuentoMonto = subtotal * porcentajeDescuento;
 decimal totalConDescuento = subtotal - descuentoMonto;
 
 int medioPago;
@@ -98,6 +96,9 @@ do
     Console.WriteLine("3 - Crédito");
     Console.Write("Opción: ");
     medioPago = Convert.ToInt32(Console.ReadLine());
+
+    decimal DescuentoEfectivo = 0m;
+    decimal RecargoCredito = 0m;
 
     switch (medioPago)
     {
@@ -131,9 +132,9 @@ for (int i = 0; i < 30; i++)
 {
     Console.Write("-");
 }
-Console.WriteLine();
 
-Console.WriteLine($"       {NombreComercio}");
+
+Console.WriteLine($"{nombre}");
 
 for (int i = 0;i < 30;i++)
 {
@@ -141,7 +142,7 @@ for (int i = 0;i < 30;i++)
 }
 Console.WriteLine() ;
 
-Console.WriteLine($"Cajero: {cajero}");
+Console.WriteLine($"Cajero: {nombre}");
 Console.WriteLine($"Productos: {cantidadProductos}");
 Console.WriteLine($"Subtotal: {subtotal}");
 Console.WriteLine($"Descuento: {descuentoTotal}");
@@ -151,3 +152,14 @@ for(int i = 0; i < 30; i++)
 {
     Console.Write("-");
 }
+Console.WriteLine() ;
+
+Console.WriteLine($"TOTAL: {totalFinal}");
+
+for ( int i = 0; i < 30; i++ )
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+
+Console.ReadLine();
